@@ -55,7 +55,12 @@ plugins=(git common-aliases osx)
 
 export PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/usr/local/git/bin:/usr/texbin:/Users/dantoccatu/Downloads/INSTALLED/premake/bin/release"
 # export MANPATH="/usr/local/man:$MANPATH"
+
+#Gradle-2.5 
+export PATH=$PATH:/Users/dantoccatu/Downloads/INSTALLED/gradle-2.5/bin
+alias jp='cd ~/Dropbox/WORK/JavaPractice'
 alias pp='cd ~/Dropbox/WORK/PythonPractice'
+alias vim='/usr/local/Cellar/vim/7.4.712_1/bin/vim'
 
 source $ZSH/oh-my-zsh.sh
 

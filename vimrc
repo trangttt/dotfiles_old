@@ -1,3 +1,4 @@
+set nu
 set nocompatible
 filetype off
 
@@ -7,13 +8,21 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'klen/python-mode'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'vim-scripts/bash-support.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'Yggdroot/indentLine'
+Plugin 'tfnico/vim-gradle'
+Plugin 'adragomir/javacomplete'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 
@@ -83,6 +92,9 @@ let mapleader = ','
 "Use <leader>l to toggle display of whitespace
 nmap <leader>l :set list!<CR>
 
+"set backspace for easy use
+set backspace=indent,eol,start
+
 " set tabs to have 4 spaces
 set ts=4
 
@@ -103,3 +115,23 @@ set showmatch
 
 " enable all Python syntax highlighting features
 let python_highlight_all = 1
+
+" Default for SYNTACTIC plugin - python
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Default mapping for CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'c'
+
+"Configuration for javacomplete
+autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+autocmd Filetype java map <leader>b: call javacomplete#GoToDefinition()<CR>
+
