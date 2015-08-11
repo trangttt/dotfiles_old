@@ -5,32 +5,78 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+
+"utilities
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'klen/python-mode'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'ervandew/supertab'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'vim-scripts/bash-support.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'Yggdroot/indentLine'
-Plugin 'tfnico/vim-gradle'
-Plugin 'adragomir/javacomplete'
+Plugin 'ervandew/supertab'
 Plugin 'majutsushi/tagbar'
+Plugin 'christoomey/vim-run-interactive'
+Plugin 'szw/vim-maximizer'
 
+"Moving
+Plugin 'easymotion/vim-easymotion'
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+
+"Editing
+Plugin 'flazz/vim-colorschemes'
+Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-surround'
+Plugin 'jiangmiao/auto-pairs'
+
+Plugin 'mtth/scratch.vim'  "Taking note
+
+"Git plugins
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+"Vim snippets
+"Plugin 'MarcWeber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
+"Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+
+"Tmux
+Plugin 'benmills/vimux' "Communicate with tmux
+Plugin 'christoomey/vim-tmux-navigator' "Enable moving between tmux - vim seamlessly
+
+"Focus vim
+"Plugin 'junegunn/goyo.vim'
+
+"Python
+Plugin 'klen/python-mode'
+Plugin 'pitluga/vimux-nose-test' "Running nose in tmux
+Plugin 'davidhalter/jedi-vim' "Auto completion
+
+"Java
+Plugin 'tfnico/vim-gradle'
+
+"Markdown
+Plugin 'plasticboy/vim-markdown'
+
+"Bash writing
+"Plugin 'vim-scripts/bash-support.vim'
+
+".tmux.conf
+"Plugin 'tmux-plugins/vim-tmux'
 call vundle#end()
 
 "Fix error: vim-airline - Display even with ONLY 1 window
 set laststatus=2
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 "Toggle NERDTree
-map <C-n> :NERDTreeToggle<CR>
+noremap <C-n> :NERDTreeToggle<CR>
 
 
 " PYTHON-MODE
@@ -52,8 +98,8 @@ map <C-n> :NERDTreeToggle<CR>
 let g:pymode_rope = 0
 
 " Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
+"let g:pymode_doc = 1
+"let g:pymode_doc_key = 'K'
 
 "Linting
 let g:pymode_lint = 1
@@ -89,8 +135,27 @@ syntax on
 color murphy
 let mapleader = ','
 
+
+"Moving between spanes smoothly
+"let g:BASH_Ctrl_j = 'off' "Turn this on to avoid conflict with bash_support
+noremap <C-j> <C-w><C-j>
+noremap <C-k> <C-w><C-k>
+noremap <C-l> <C-w><C-l>
+noremap <C-h> <C-w><C-h>
+noremap <C-\> <C-w><C-\\>
+
+"Moving from vim to tmux
+let g:tmux_navigator_no_mappings = 1
+
+noremap <silent> <C-h> :TmuxNavigateLeft<cr>
+noremap <silent> <C-j> :TmuxNavigateDown<cr>
+noremap <silent> <C-k> :TmuxNavigateUp<cr>
+noremap <silent> <C-l> :TmuxNavigateRight<cr>
+noremap <silent> <C-\\> :TmuxNavigatePrevious<cr>
+
+
 "Use <leader>l to toggle display of whitespace
-nmap <leader>l :set list!<CR>
+nnoremap <leader>l :set list!<CR>
 
 "set backspace for easy use
 set backspace=indent,eol,start
@@ -104,7 +169,7 @@ set autoindent
 " expand tabs into spaces
 set expandtab
 
-" when using the >> or << commands, shift lines by 4 spaces
+" when using the> or << commands, shift lines by 4 spaces
 set shiftwidth=4
 
 " show a visual line under the cursor's current line 
@@ -131,7 +196,53 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'c'
 
+
 "Configuration for javacomplete
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 autocmd Filetype java map <leader>b: call javacomplete#GoToDefinition()<CR>
+
+"tagbar
+"Configuration for tagbar
+nnoremap <F8> :TagbarToggle<CR>
+
+"Scratch
+"autohide
+let g:scratch_autohide = 1
+
+
+""""""""""""""
+"VIMUX shortcut
+"""""""""""""""
+"
+"Running python test
+noremap <Leader>rt :call VimuxRunCommand("python -m unittest " . bufname("%"))<CR>
+
+" Prompt for a command to run
+ noremap <Leader>vp :VimuxPromptCommand<CR>
+
+ " Run last command executed by VimuxRunCommand
+ noremap <Leader>vl :VimuxRunLastCommand<CR>
+
+" Interrupt any command running in the runner pane map
+noremap <Leader>vi :VimuxInterruptRunner<CR>
+
+"""""""""""""""""""
+ "Toogle Relative Number between Absolute Line Number
+let g:UseNumberToggleTrigger = 1 
+let g:NumberToggleTrigger="<F2>"
+
+
+"""""""Shortcut for RunInteractiveShel""""""
+nnoremap <leader>ri :RunInInteractiveShell<space>
+
+
+""Trigger ultisnips"""""
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 

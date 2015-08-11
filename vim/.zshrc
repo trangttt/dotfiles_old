@@ -1,0 +1,1 @@
+/Users/dantoccatu/dotfiles/zshrc

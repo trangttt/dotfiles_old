@@ -20,7 +20,7 @@
 set -o nounset                              # Treat unset variables as an error
 dir=~/dotfiles
 olddir=~/dotfiles_old
-files="bashrc vimrc vim zshrc oh-my-zsh"    #list of files/folders to symlink in homedir
+files="tmux tmux.conf bashrc vimrc vim zshrc oh-my-zsh"    #list of files/folders to symlink in homedir
 
 #create dotfiles_old in homedir
 echo -n "Creating $olddir for backup of any existing dotfiles in ~..."
@@ -35,7 +35,8 @@ echo "done"
 #move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfils_old
+    mv ~/.$file $(olddir)
+    #mv ~/.$file ~/dotfils_old
     echo "Creating symlink to $file in home directory"
     ln -s $dir/$file ~/.$file
 done
@@ -49,7 +50,7 @@ if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
         git clone http://github.com/robbyrussell/oh-my-zsh.git
     fi
     #Set the default shell to zsh if it isn't currently set to zsh
-    if [[ !(echo $SHELL) == $(which zsh) ]]; then
+    if [[ $(echo $SHELL) != $(which zsh) ]]; then
         chsh -s $(which zsh)
     fi
 else

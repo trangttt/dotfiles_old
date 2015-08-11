@@ -58,9 +58,11 @@ export PATH="/Library/Frameworks/Python.framework/Versions/3.4/bin:/bin:/usr/sbi
 
 #Gradle-2.5 
 export PATH=$PATH:/Users/dantoccatu/Downloads/INSTALLED/gradle-2.5/bin
-alias jp='cd ~/Dropbox/WORK/JavaPractice'
-alias pp='cd ~/Dropbox/WORK/PythonPractice'
-alias vim='/usr/local/Cellar/vim/7.4.712_1/bin/vim'
+
+#Anaconda
+export PATH=$PATH:~/anaconda/bin/
+
+export TODO_DIR='/Users/dantoccatu/.todo'
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,5 +88,16 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshcfg="vim ~/.zshrc"
+alias jp='cd ~/Dropbox/WORK/JavaPractice'
+alias pp='cd ~/Dropbox/WORK/PythonPractice'
+alias vim='/usr/local/Cellar/vim/7.4.712_1/bin/vim'
+alias python='/Library/Frameworks/Python.framework/Versions/3.4/bin/python3'
+alias dl='cd ~/Downloads'
+alias db='cd ~/Dropbox'
+alias todo='/usr/local/Cellar/todo-txt/2.10/bin/todo.sh'
+
+alias zcfg='vim ~/.zshrc'
+alias vcfg='vim ~/.vimrc'
+alias tcfg='vim ~/.tmux.conf'
+alias ohmyzsh="vim ~/.oh-my-zsh"

@@ -1,0 +1,7 @@
+pane	configuration	1	:Python	1	:*	0	:/Users/dantoccatu/Dropbox/WORK/PythonPractice	1	vim	:/usr/local/Cellar/vim/7.4.712_1/bin/vim /Users/dantoccatu/Dropbox/WORK/note.md
+pane	configuration	2	:zsh	0	:-	0	:/Users/dantoccatu/Dropbox/WORK	1	zsh	:
+pane	python	1	:zsh	1	:*	0	:/Users/dantoccatu	1	zsh	:
+window	configuration	1	1	:*	b55e,211x52,0,0,1
+window	configuration	2	0	:-	b561,211x52,0,0,4
+window	python	1	1	:*	b55d,211x52,0,0,0
+state	configuration	configuration

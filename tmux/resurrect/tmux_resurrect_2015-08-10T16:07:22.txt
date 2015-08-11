@@ -1,0 +1,6 @@
+pane	configuration	1	:vim	1	:*	0	:/Users/dantoccatu/Downloads/OpenWest_vim	1	vim	:/usr/local/Cellar/vim/7.4.712_1/bin/vim demo.txt
+pane	configuration	2	:vim	0	:-	0	:/Users/dantoccatu/Dropbox/WORK/PythonPractice	1	vim	:/usr/local/Cellar/vim/7.4.712_1/bin/vim /Users/dantoccatu/.tmux.conf
+pane	configuration	2	:vim	0	:-	1	:/Users/dantoccatu/Dropbox/WORK/PythonPractice	0	vim	:/usr/local/Cellar/vim/7.4.712_1/bin/vim 135I_DeMorgan_law_2.py
+window	configuration	1	1	:*	b55f,211x52,0,0,2
+window	configuration	2	0	:-	db7c,211x52,0,0{105x52,0,0,0,105x52,106,0,1}
+state	configuration	configuration
